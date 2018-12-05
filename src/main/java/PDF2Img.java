@@ -41,7 +41,7 @@ public class PDF2Img {
             Double convertFraction = 0.0d;
             for (int i = start; i < end + 1; i++) {
                 BufferedImage image = decoder.getPageAsImage(i);
-                String imgName = imageFile + "__pdf__pic_" + (i) + ".png";
+                String imgName = imageFile + "__pdf__pic_" + (i) + ".jpg";
                 imgNames.add(imgName);
                 writeHighQuality(image,imgName);
 //                ImageIO.write(image, "png", new File(imgName));
@@ -125,7 +125,7 @@ public class PDF2Img {
             bufferedImage = resizeImage(im,type);
             JPEGEncodeParam jep = JPEGCodec.getDefaultJPEGEncodeParam(bufferedImage);
 	            /* 压缩质量 */
-            jep.setQuality(0.9f, true);
+            jep.setQuality(1.0f, true);
             encoder.encode(bufferedImage, jep);
 	           /*近JPEG编码*/
             newimage.close();
@@ -149,7 +149,7 @@ public class PDF2Img {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        pdfToImage("D:\\王紫阳\\任务\\测试pdf\\睛像科技_内存溢出.pdf", "D:\\王紫阳\\任务\\测试pdf\\pdfImage\\睛像科技_内存溢出",2.0f);
+        pdfToImage("D:\\王紫阳\\任务\\测试pdf\\产品分类_长图.pdf", "D:\\王紫阳\\任务\\测试pdf\\pdfImage\\产品分类_长图",2.0f);
         long endTime = System.currentTimeMillis();
         System.out.println("当前程序耗时："+(endTime - startTime)+"ms");
     }
